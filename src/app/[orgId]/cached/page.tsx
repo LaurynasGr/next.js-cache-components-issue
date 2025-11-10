@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { DataTable } from '@/components/data-table';
+import { DevicesTable } from '@/components/devices-table';
 import { geCachedDevices } from '@/api';
 import { Page } from '@/components/page';
 import { CachedPageContent } from './content';
@@ -19,7 +19,7 @@ export default async function CachedPage(props: PageProps<'/[orgId]/cached'>) {
     <Suspense
       fallback={
         <Page title="Cached Page">
-          <DataTable data={[]} loading />
+          <DevicesTable data={[]} loading />
         </Page>
       }
     >

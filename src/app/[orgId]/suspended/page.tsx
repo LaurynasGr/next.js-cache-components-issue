@@ -1,4 +1,4 @@
-import { DataTable } from '@/components/data-table';
+import { DevicesTable } from '@/components/devices-table';
 import { getDevices } from '@/api';
 import { Page } from '@/components/page';
 import { Suspense } from 'react';
@@ -8,7 +8,7 @@ async function SuspendedPageContent({ params }: PageProps<'/[orgId]/suspended'>)
   const devices = await getDevices(orgId);
   return (
     <Page title="Suspended Page">
-      <DataTable data={devices} />
+      <DevicesTable data={devices} />
     </Page>
   );
 }
@@ -18,7 +18,7 @@ export default async function SuspendedPage(props: PageProps<'/[orgId]/suspended
     <Suspense
       fallback={
         <Page title="Suspended Page">
-          <DataTable data={[]} loading />
+          <DevicesTable data={[]} loading />
         </Page>
       }
     >

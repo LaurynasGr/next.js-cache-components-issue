@@ -1,10 +1,10 @@
 'use cache';
 
-import { DataTable } from '@/components/data-table';
+import { DevicesTable } from '@/components/devices-table';
 import { Device } from '@/types';
 
 export async function CachedPageContent({ devices }: CachedPageContentProps) {
-  return <DataTable data={devices} />;
+  return <DevicesTable tableWrapperClassName="max-h-[calc(100vh-200px)]" data={devices} />;
 }
 
 interface CachedPageContentProps {
