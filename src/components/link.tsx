@@ -44,7 +44,7 @@ export function SuspendedNavLink(props: NavLinkActiveProps & LinkProps) {
 
 export function Link({ className, disabled, onClick, router, ...rest }: LinkProps) {
   // For cacheComponents: true, we need to use `SuspendedNavLink` instead of `NavLink`
-  const LinkComponent = rest.activeClassName || router ? NavLink : NextLink;
+  const LinkComponent = rest.activeClassName || router ? SuspendedNavLink : NextLink;
   const isDisabled = disabled;
   return (
     <LinkComponent

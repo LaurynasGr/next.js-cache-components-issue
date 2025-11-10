@@ -2,9 +2,9 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   output: process.env.NEXT_MODE === 'standalone' ? 'standalone' : undefined,
-  // cacheComponents: true,
+  cacheComponents: true,
   experimental: {
-    useCache: true,
+    // useCache: true,
   },
 };
 
