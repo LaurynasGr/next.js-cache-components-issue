@@ -14,12 +14,19 @@ function UserContentComponent({ user }: { user: Awaited<ReturnType<typeof getUse
   );
 }
 
-export async function SuspendedUserContent() {
+export async function SuspendedUserContent({ inSuspense }: SuspendedUserContentProps) {
+  if (inSuspense) {
+    return <UserContentComponent user={null} />;
+  }
   return (
     <Suspense fallback={<UserContentComponent user={null} />}>
       <UserContent />
     </Suspense>
   );
+}
+
+interface SuspendedUserContentProps {
+  inSuspense?: boolean;
 }
 
 export async function UserContent() {

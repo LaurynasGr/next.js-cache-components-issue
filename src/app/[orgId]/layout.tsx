@@ -7,7 +7,7 @@ function SidebarContent({ children, defaultOpen }: React.PropsWithChildren & { d
     <SidebarProvider defaultOpen={defaultOpen ?? true}>
       <Sidebar>
         {/* For cacheComponents: true, we need to use `SuspendedUserContent` instead of `UserContent` */}
-        <SuspendedUserContent />
+        <SuspendedUserContent inSuspense={defaultOpen === undefined} />
       </Sidebar>
       {children}
     </SidebarProvider>
