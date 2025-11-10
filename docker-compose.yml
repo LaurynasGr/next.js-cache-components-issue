@@ -1,0 +1,13 @@
+name: cache-components-issue
+
+services:
+  web:
+    mem_limit: 1024m
+    cpus: 0.5
+    container_name: web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: web
+    ports:
+      - 3000:3000

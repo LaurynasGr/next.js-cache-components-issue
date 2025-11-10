@@ -9,10 +9,14 @@ dev: ## Run development server
 	npm run dev
 
 build: ## Build application
-	npm run build
+	NEXT_MODE=standalone npm run build
 
 serve: build ## Build production version of application and start the server
 	NODE_ENV=production npm run start
+
+# LOCAL SETUP
+up: ## Build and start docker containers
+	docker compose --progress=auto build && docker compose up
 
 clean-files: ## Remove all generated files
 	rm -rf node_modules .next && \
