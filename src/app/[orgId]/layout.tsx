@@ -2,9 +2,9 @@ import { Suspense } from 'react';
 import { cookies } from 'next/headers';
 import { SidebarProvider, UserContent, Sidebar } from '@/components/sidebar';
 
-function SidebarContent({ children, defaultOpen }: React.PropsWithChildren & { defaultOpen: boolean }) {
+function SidebarContent({ children, defaultOpen }: React.PropsWithChildren & { defaultOpen?: boolean }) {
   return (
-    <SidebarProvider defaultOpen={defaultOpen}>
+    <SidebarProvider defaultOpen={defaultOpen ?? true}>
       <Sidebar>
         {/* For cacheComponents: true, we need to use `SuspendedUserContent` instead of `UserContent` */}
         <UserContent />
@@ -25,7 +25,7 @@ async function SidebarWrapper({ children }: React.PropsWithChildren) {
 
 export async function SuspendedSidebarWrapper({ children }: React.PropsWithChildren) {
   return (
-    <Suspense fallback={<SidebarContent defaultOpen>{children}</SidebarContent>}>
+    <Suspense fallback={<SidebarContent>{children}</SidebarContent>}>
       <SidebarWrapper>{children}</SidebarWrapper>
     </Suspense>
   );
