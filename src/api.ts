@@ -1015,6 +1015,10 @@ const devices = [
   },
 ];
 
+function numberBetween(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function getDevices(_orgId: string) {
   await new Promise((resolve) => setTimeout(resolve, 500));
@@ -1039,8 +1043,14 @@ export async function getUserInfo() {
     return redirect('/');
   }
 
-  // Very fast API call to get latest user info - 100ms at worst, but usually much faster...
-  await new Promise((resolve) => setTimeout(resolve, Math.random() * 100));
+  const start = performance.now();
+  const random = numberBetween(50, 150);
+  // const total = random * 2_000_000;
+  // for (let i = 0; i < total; i++) {
+  //   Math.sqrt(i);
+  // }
+  await new Promise((resolve) => setTimeout(resolve, random));
+  console.log(`Get user done in ${performance.now() - start}ms`);
 
   return {
     name: 'John Doe',
